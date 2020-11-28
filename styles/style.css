@@ -221,7 +221,8 @@ div.center {
 }
 
 .center .task-area .task-list .task-item.checked {
-  text-decoration: line-through;
+  color: #ccc;
+  background-image: url("./images/task-rectangle-ticked.svg");
 }
 
 .center .footer {
