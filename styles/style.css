@@ -1,0 +1,248 @@
+@font-face {
+  src: url("./fonts/fira-sans/FiraSans-Regular.otf");
+  font-family: FiraSans;
+  font-weight: normal;
+}
+
+@font-face {
+  src: url("./fonts/fira-sans/FiraSans-Bold.otf");
+  font-family: FiraSans;
+  font-weight: bold;
+}
+
+@font-face {
+  src: url("./fonts/fira-sans/FiraSans-Light.otf");
+  font-family: FiraSans;
+  font-weight: lighter;
+}
+
+@font-face {
+  src: url("./fonts/Montserrat/Montserrat-Regular.ttf");
+  font-family: Montserrat;
+  font-weight: normal;
+}
+
+@font-face {
+  src: url("./fonts/Montserrat/Montserrat-Bold.ttf");
+  font-family: Montserrat;
+  font-weight: bold;
+}
+
+@font-face {
+  src: url("./fonts/Montserrat/Montserrat-Light.ttf");
+  font-family: Montserrat;
+  font-weight: lighter;
+}
+
+div.center input#task-input {
+  font-family: "FiraSans";
+}
+
+div.center .button {
+  font-family: Montserrat;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  line-height: 2.25;
+}
+
+.task-item {
+  font-family: FiraSans;
+  font-size: 1rem;
+  line-height: 2.5;
+}
+
+/*** Basic CSS Reset ***/
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  font-family: inherit;
+}
+
+input,
+textarea,
+button,
+select {
+  outline: none;
+}
+
+html {
+  font-size: 16px;
+}
+
+/*** Basic Styling ***/
+html {
+  background-color: #fff824;
+}
+
+div.center {
+  background-color: white;
+  width: 400px;
+  height: 450px;
+  /* some temp constant height */
+  border-radius: 15px;
+  margin: auto;
+  margin-top: 200px;
+}
+
+/* Box shadow */
+div.center {
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  /* box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; */
+  /* box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; */
+  /* box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; */
+}
+
+.center {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.center .button {
+  display: inline-block;
+  background-color: #000000;
+  border-radius: 6px;
+  height: 36px;
+  width: 50px;
+}
+
+.center .button:hover {
+  cursor: pointer;
+  background-color: #fff;
+  color: black;
+  line-height: 2;
+  border: 2px black solid;
+}
+
+.center #button-delete-all {
+  width: 115px;
+}
+
+.center #button-delete-checked {
+  width: 160px;
+  margin-right: 10px;
+}
+
+.center .input-area {
+  margin: auto;
+  padding-top: 30px;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.center .input-area input#task-input {
+  width: 240px;
+  height: 2em;
+  padding: 1em;
+  margin-right: 2em;
+  border: 2px solid #DADCE0;
+  border-radius: 4px;
+}
+
+.center .input-area input#task-input:focus {
+  border-color: black;
+}
+
+.center .input-area input#task-input::-webkit-input-placeholder {
+  color: #DADCE0;
+}
+
+.center .input-area input#task-input:-ms-input-placeholder {
+  color: #DADCE0;
+}
+
+.center .input-area input#task-input::-ms-input-placeholder {
+  color: #DADCE0;
+}
+
+.center .input-area input#task-input::placeholder {
+  color: #DADCE0;
+}
+
+.center .task-area {
+  min-height: 295px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.center .task-area .task-list {
+  background-color: #F8F8F8;
+  height: 275px;
+  width: 320px;
+  border-radius: 10px;
+}
+
+.center .task-area .task-list .task-item {
+  height: 40px;
+  padding-left: 2.5rem;
+  position: relative;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+
+.center .task-area .task-list .task-item:hover {
+  cursor: pointer;
+}
+
+.center .task-area .task-list .task-item::before {
+  content: "";
+  position: absolute;
+  bottom: 13px;
+  left: 1rem;
+  background-color: white;
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(0, 0, 0, 0.575);
+  border-radius: 3px;
+  margin-right: 1rem;
+}
+
+.center .task-area .task-list .task-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  width: 90%;
+  height: 2px;
+  left: 5%;
+  bottom: 0;
+  background-color: rgba(204, 204, 204, 0.24);
+  border-radius: 3px;
+}
+
+.center .task-area .task-list .task-item.checked {
+  text-decoration: line-through;
+}
+
+.center .footer {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+/*# sourceMappingURL=style.css.map */
