@@ -10,6 +10,7 @@ addBtn.addEventListener("click", addTask);
 tasksList.addEventListener("click", checkTask);
 deleteCheckedBtn.addEventListener("click", deleteCheckedTasks);
 deleteAllBtn.addEventListener("click", deleteAllTasks);
+window.addEventListener("keypress", eventEnter)
 
 function deleteCheckedTasks() {
     let tasks = document.querySelectorAll(".task-item")
@@ -28,7 +29,7 @@ function deleteAllTasks() {
 }
 
 function checkTask(e) {
-    if (e.target.nodeName == "P") {
+    if (e.target.nodeName === "P") {
         if (e.target.className.includes("checked")) {
             e.target.classList.remove("checked");
         }
@@ -39,24 +40,44 @@ function checkTask(e) {
 }
 
 function createTask(taskText) {
-    let tasksCount = tasksList.childElementCount;
+    const tasksCount = tasksList.childElementCount;
 
-    let newTask = document.createElement("p");
+    const newTask = document.createElement("p");
     newTask.setAttribute("class", "task-item");
     newTask.setAttribute("id",  `task${tasksCount}`);
+    newTask.setAttribute("class", "task-item");
     newTask.textContent = taskText;
 
     return newTask;
 }
 
 function addTask() {
-    if (taskInput.value != "") {
-
+    if (taskInput.value !== "") {
         tasksList.appendChild( createTask(taskInput.value) )
         taskInput.value = ""
     }
     else {
         alert("Please, add some task for new task.")
+    }
+}
+
+function eventEnter(e) {
+    if (e.key === "Enter") {
+        switch (e.target) {
+            case (addBtn): 
+            case (taskInput): {
+                addTask(e);
+                break;
+            }
+            case (deleteAllBtn): {
+                deleteAllTasks(e);
+                break;
+            }
+            case (deleteCheckedBtn): {
+                deleteCheckedTasks(e);
+                break;
+            }
+        }
     }
 }
 
