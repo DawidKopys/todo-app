@@ -29,24 +29,29 @@ function deleteAllTasks() {
 }
 
 function checkTask(e) {
-    if (e.target.nodeName === "P") {
-        if (e.target.className.includes("checked")) {
-            e.target.classList.remove("checked");
+    if ((e.target.className === "task-text") || (e.target.className === "task-rectangle")) {
+        if (e.target.parentElement.className.includes("checked")) {
+            e.target.parentElement.classList.remove("checked");
         }
         else {
-            e.target.classList.add("checked");
+            e.target.parentElement.classList.add("checked");
         }
     }
 }
 
 function createTask(taskText) {
-    const tasksCount = tasksList.childElementCount;
+    const newTask = document.createElement("div");
+    newTask.setAttribute("class", "task-item");
 
-    const newTask = document.createElement("p");
-    newTask.setAttribute("class", "task-item");
-    newTask.setAttribute("id",  `task${tasksCount}`);
-    newTask.setAttribute("class", "task-item");
-    newTask.textContent = taskText;
+    const taskRectangleDiv = document.createElement("div");
+    taskRectangleDiv.setAttribute("class", "task-rectangle");
+
+    const taskPar = document.createElement("p");
+    taskPar.setAttribute("class", "task-text");
+    taskPar.textContent = taskText;
+
+    newTask.appendChild(taskRectangleDiv);
+    newTask.appendChild(taskPar);
 
     return newTask;
 }

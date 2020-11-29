@@ -199,17 +199,33 @@ div.center {
 }
 
 .center .task-area .task-list .task-item {
-  height: 40px;
-  padding-left: 2.5rem;
+  height: 2.5rem;
   position: relative;
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
-  background-image: url("./images/task-rectangle.svg");
-  background-repeat: no-repeat;
-  background-position: 5% 50%;
 }
 
-.center .task-area .task-list .task-item:hover {
+.center .task-area .task-list .task-item .task-rectangle {
+  display: inline-block;
+  vertical-align: middle;
+  height: inherit;
+  width: 2.5rem;
+  background-image: url("./images/task-rectangle.svg");
+  background-repeat: no-repeat;
+  background-position: 75% 50%;
+}
+
+.center .task-area .task-list .task-item .task-rectangle:hover {
+  cursor: pointer;
+  background-image: url("./images/task-rectangle-hover-dark.svg");
+}
+
+.center .task-area .task-list .task-item .task-text {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.center .task-area .task-list .task-item .task-text:hover {
   cursor: pointer;
 }
 
@@ -224,10 +240,17 @@ div.center {
   border-radius: 3px;
 }
 
-.center .task-area .task-list .task-item.checked {
+.center .task-area .task-list .task-item.checked .task-rectangle {
+  background-image: url("./images/task-rectangle-small-tick.svg");
+}
+
+.center .task-area .task-list .task-item.checked .task-rectangle:hover {
+  background-image: url("./images/task-rectangle-ticked-hover-dark.svg");
+}
+
+.center .task-area .task-list .task-item.checked .task-text {
   text-decoration: line-through;
   color: #ccc;
-  background-image: url("./images/task-rectangle-small-tick.svg");
 }
 
 .center .footer {
