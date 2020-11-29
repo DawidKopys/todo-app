@@ -8,6 +8,7 @@ const deleteCheckedBtn = document.getElementById("button-delete-checked");
 
 addBtn.addEventListener("click", addTask);
 tasksList.addEventListener("click", checkTask);
+tasksList.addEventListener("click", deleteTask);
 deleteCheckedBtn.addEventListener("click", deleteCheckedTasks);
 deleteAllBtn.addEventListener("click", deleteAllTasks);
 window.addEventListener("keypress", eventEnter)
@@ -45,13 +46,19 @@ function createTask(taskText) {
 
     const taskRectangleDiv = document.createElement("div");
     taskRectangleDiv.setAttribute("class", "task-rectangle");
+    taskRectangleDiv.setAttribute("title", "Check task");
 
     const taskPar = document.createElement("p");
     taskPar.setAttribute("class", "task-text");
     taskPar.textContent = taskText;
 
+    const taskDeleteDiv = document.createElement("div");
+    taskDeleteDiv.setAttribute("class", "task-delete");
+    taskDeleteDiv.setAttribute("title", "Delete task");
+
     newTask.appendChild(taskRectangleDiv);
     newTask.appendChild(taskPar);
+    newTask.appendChild(taskDeleteDiv);
 
     return newTask;
 }
@@ -63,6 +70,12 @@ function addTask() {
     }
     else {
         alert("Please, add some task for new task.")
+    }
+}
+
+function deleteTask(e) {
+    if (e.target.className === "task-delete") {
+        e.target.parentElement.remove();
     }
 }
 
