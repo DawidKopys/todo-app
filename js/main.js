@@ -9,9 +9,19 @@ const deleteCheckedBtn = document.getElementById("button-delete-checked");
 addBtn.addEventListener("click", addTask);
 tasksList.addEventListener("click", checkTask);
 tasksList.addEventListener("click", deleteTask);
+tasksList.addEventListener("keydown", handleTaskEdit);
 deleteCheckedBtn.addEventListener("click", deleteCheckedTasks);
 deleteAllBtn.addEventListener("click", deleteAllTasks);
 window.addEventListener("keypress", eventEnter)
+
+function handleTaskEdit(e) {
+    if (e.target.className === "task-text") {
+        if (e.key === "Backspace" && e.target.innerText.length === 0) {
+            e.target.parentElement.remove();
+        }
+        resizeOnOverflow();
+    }
+}
 
 function deleteCheckedTasks() {
     let tasks = document.querySelectorAll(".task-item")
@@ -20,6 +30,7 @@ function deleteCheckedTasks() {
             task.remove();
         }
     }    
+    resizeOnOverflow();
 }
 
 function deleteAllTasks() {
@@ -27,10 +38,12 @@ function deleteAllTasks() {
     for (let task of tasks) {
         task.remove();
     }
+    resizeOnOverflow();
 }
 
 function checkTask(e) {
-    if ((e.target.className === "task-text") || (e.target.className === "task-rectangle")) {
+    if (e.target.className === "task-rectangle") {
+        const taskText = e.target.parentElement.querySelector("p.task-text");
         if (e.target.parentElement.className.includes("checked")) {
             e.target.parentElement.classList.remove("checked");
         }
@@ -50,6 +63,7 @@ function createTask(taskText) {
 
     const taskPar = document.createElement("p");
     taskPar.setAttribute("class", "task-text");
+    taskPar.setAttribute("contenteditable", "true");
     taskPar.textContent = taskText;
 
     const taskDeleteDiv = document.createElement("div");
@@ -63,19 +77,28 @@ function createTask(taskText) {
     return newTask;
 }
 
+function resizeOnOverflow() {
+    if ( isOverflown(tasksList) ) {
+        tasksList.classList.add("narrow");
+    }
+    else { tasksList.classList.remove("narrow"); }
+}
+
 function addTask() {
     if (taskInput.value !== "") {
         tasksList.appendChild( createTask(taskInput.value) )
-        taskInput.value = ""
+        taskInput.value = "";
+        resizeOnOverflow();
     }
     else {
-        alert("Please, add some task for new task.")
+        alert("Please, add some text for new task.")
     }
 }
 
 function deleteTask(e) {
     if (e.target.className === "task-delete") {
         e.target.parentElement.remove();
+        resizeOnOverflow();
     }
 }
 
@@ -99,4 +122,6 @@ function eventEnter(e) {
     }
 }
 
-
+function isOverflown(element) {
+    return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+}

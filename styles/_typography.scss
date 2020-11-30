@@ -14,10 +14,4 @@ div.center .button {
 
 .task-item {
     font-family: FiraSans;
-    font-size: 0; // to get rid of the space between inline-block elements ...
-    line-height: 2.5;
-
-    .task-text {
-        font-size: 1rem; // ... revert to the right font-size
-    }
 }
