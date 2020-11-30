@@ -4,7 +4,8 @@ const addBtn       = document.getElementById("button-add");
 const deleteAllBtn = document.getElementById("button-delete-all");
 const taskInput    = document.getElementById("task-input");
 const tasksList    = document.getElementsByClassName("task-list")[0];
-const deleteCheckedBtn = document.getElementById("button-delete-checked"); 
+const deleteCheckedBtn = document.getElementById("button-delete-checked");
+const popup        = document.getElementById("task-input-popup");
 
 addBtn.addEventListener("click", addTask);
 tasksList.addEventListener("click", checkTask);
@@ -12,7 +13,8 @@ tasksList.addEventListener("click", deleteTask);
 tasksList.addEventListener("keydown", handleTaskEdit);
 deleteCheckedBtn.addEventListener("click", deleteCheckedTasks);
 deleteAllBtn.addEventListener("click", deleteAllTasks);
-window.addEventListener("keypress", eventEnter)
+window.addEventListener("keydown", eventEnter);
+popup.addEventListener("click", hidePopup);
 
 function handleTaskEdit(e) {
     if (e.target.className === "task-text") {
@@ -91,8 +93,16 @@ function addTask() {
         resizeOnOverflow();
     }
     else {
-        alert("Please, add some text for new task.")
+        showPopup();
     }
+}
+
+function showPopup() {
+    popup.classList.add("show");
+}
+
+function hidePopup() {
+    popup.classList.remove("show");
 }
 
 function deleteTask(e) {
@@ -103,6 +113,10 @@ function deleteTask(e) {
 }
 
 function eventEnter(e) {
+    if (e.target === taskInput) {
+        hidePopup();
+    }
+
     if (e.key === "Enter") {
         switch (e.target) {
             case (addBtn): 

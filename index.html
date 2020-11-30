@@ -10,7 +10,10 @@
 <body>
     <div class="center">
         <div class="input-area">
-            <input type="text" id="task-input" placeholder="New Task">
+            <div id="task-input-container">
+                <input type="text" id="task-input" placeholder="New Task">
+                <p id="task-input-popup">Task text can't be empty!</p>
+            </div>            
             <p class="button" id="button-add" tabindex="0">Add</p>
         </div>
         <div class="task-area">

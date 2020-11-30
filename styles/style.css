@@ -34,6 +34,12 @@
   font-weight: lighter;
 }
 
+@font-face {
+  src: url("./fonts/Montserrat/Montserrat-Medium.ttf");
+  font-family: MontserratMedium;
+  font-weight: normal;
+}
+
 div.center input#task-input {
   font-family: "FiraSans";
 }
@@ -48,6 +54,31 @@ div.center .button {
 
 .task-item {
   font-family: FiraSans;
+}
+
+#task-input-popup {
+  font-family: MontserratMedium;
+  font-weight: normal;
+  font-size: 0.75rem;
+  color: white;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /*** Basic CSS Reset ***/
@@ -109,6 +140,10 @@ div.center {
   border-radius: 6px;
   height: 36px;
   width: 50px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .center .button:hover, .center .button:focus {
@@ -117,15 +152,16 @@ div.center {
   color: black;
   line-height: 2;
   border: 2px black solid;
+  outline: none;
 }
 
-.center #button-delete-all {
+.center .button#button-delete-all {
   -webkit-box-flex: 1;
       -ms-flex: 1 115px;
           flex: 1 115px;
 }
 
-.center #button-delete-checked {
+.center .button#button-delete-checked {
   -webkit-box-flex: 1;
       -ms-flex: 1 160px;
           flex: 1 160px;
@@ -174,6 +210,41 @@ div.center {
 
 .center .input-area input#task-input::placeholder {
   color: #DADCE0;
+}
+
+.center .input-area #task-input-container {
+  position: relative;
+}
+
+.center .input-area #task-input-container #task-input-popup {
+  visibility: hidden;
+  position: absolute;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-color: black;
+  border-radius: 10px;
+  padding: 10px;
+  bottom: 2.5rem;
+  left: -0.15rem;
+}
+
+.center .input-area #task-input-container #task-input-popup::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 1rem;
+  border-width: 8px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.center .input-area #task-input-container #task-input-popup.show {
+  visibility: visible;
+  -webkit-animation: fadeIn 0.5s;
+          animation: fadeIn 0.5s;
 }
 
 .center .task-area {

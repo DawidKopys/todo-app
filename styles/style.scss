@@ -1,6 +1,11 @@
 @import 'variables';
 @import 'typography';
 
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+
 /*** Basic CSS Reset ***/
 * {
     box-sizing: border-box;
@@ -57,6 +62,7 @@ div.center {
         border-radius: 6px;
         height: 36px;
         width: 50px;
+        user-select: none;
 
         &:hover, &:focus{
             cursor: pointer;
@@ -64,16 +70,17 @@ div.center {
             color: black;
             line-height: 2;
             border: 2px black solid;
+            outline: none;
         }
-    }
 
-    #button-delete-all {
-        flex: 1 115px;
-    }
+        &#button-delete-all { 
+            flex: 1 115px; 
+        }
 
-    #button-delete-checked {
-        flex: 1 160px;
-        margin-right: 10px;
+        &#button-delete-checked { 
+            flex: 1 160px;    
+            margin-right: 10px;
+        }
     }
 
     .input-area {
@@ -100,7 +107,43 @@ div.center {
                 color: $grey1;
             }
         }
+
+        // Task input pop-up
+        #task-input-container {
+            position: relative;
+            
+            // The actual pop-up
+            #task-input-popup {
+                visibility: hidden;
+                position: absolute;
+                cursor: pointer;
+                user-select: none;
+                background-color: black;
+                border-radius: 10px;
+                padding: 10px;
+                bottom: 2.5rem;
+                left: -0.15rem;
+
+                // pop-up arrow
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 100%;
+                    left:   1rem;
+                    border-width: 8px;
+                    border-style: solid;
+                    border-color: black transparent transparent transparent;
+                }
+
+                &.show {
+                    visibility: visible;
+                    animation: fadeIn 0.5s;
+                }
+            }
+        }
     }
+
+
 
     .task-area {
         min-height: 295px;
@@ -223,5 +266,3 @@ div.center {
         justify-content: flex-end;
     }
 }
-
-
