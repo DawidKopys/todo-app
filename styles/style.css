@@ -84,6 +84,11 @@ html {
   font-size: 16px;
 }
 
+button {
+  background: none;
+  border: none;
+}
+
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0;
@@ -291,9 +296,11 @@ div.center-card {
   background-position: center;
 }
 
-.task-area .task-list .task-item .task-rectangle:hover {
+.task-area .task-list .task-item .task-rectangle:hover, .task-area .task-list .task-item .task-rectangle:focus {
   cursor: pointer;
   background-image: url("./images/task-rectangle-hover-dark.svg");
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .task-area .task-list .task-item .task-text {
@@ -329,7 +336,7 @@ div.center-card {
   background-image: url("./images/task-rectangle-small-tick.svg");
 }
 
-.task-area .task-list .task-item.checked .task-rectangle:hover {
+.task-area .task-list .task-item.checked .task-rectangle:hover, .task-area .task-list .task-item.checked .task-rectangle:focus {
   background-image: url("./images/task-rectangle-ticked-hover-dark.svg");
 }
 
@@ -356,7 +363,7 @@ div.center-card {
   background-position: 3px center;
 }
 
-.task-area .task-list .task-item .task-delete:hover {
+.task-area .task-list .task-item .task-delete:hover, .task-area .task-list .task-item .task-delete:focus {
   cursor: pointer;
   background-color: #DADCE0;
   background-image: url("./images/cross-14px-hover-dark.svg");
@@ -376,5 +383,12 @@ div.center-card {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+}
+
+.sr-only {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
 }
 /*# sourceMappingURL=style.css.map */

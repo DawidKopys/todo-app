@@ -102,13 +102,15 @@ function deleteAllTasks() {
 }
 
 function checkTask(e) {
-    const taskText = e.target.parentElement.querySelector("p.task-text");
-
     if (e.target.parentElement.className.includes("checked")) {
         e.target.parentElement.classList.remove("checked");
+        e.target.setAttribute("title", "Check task");
+        e.target.children[0].textContent = "Check task"
     }
     else {
         e.target.parentElement.classList.add("checked");
+        e.target.setAttribute("title", "Uncheck task");
+        e.target.children[0].textContent = "Uncheck task"
     }
 }
 
@@ -116,22 +118,32 @@ function createTask(taskText) {
     const newTask = document.createElement("div");
     newTask.setAttribute("class", "task-item");
 
-    const taskRectangleDiv = document.createElement("div");
-    taskRectangleDiv.setAttribute("class", "task-rectangle");
-    taskRectangleDiv.setAttribute("title", "Check task");
+    const taskRectangleButton = document.createElement("button");
+    taskRectangleButton.setAttribute("class", "task-rectangle");
+    taskRectangleButton.setAttribute("title", "Check task");
+    
+    const taskRectangleSpan = document.createElement("span");
+    taskRectangleSpan.setAttribute("class", "sr-only");
+    taskRectangleSpan.textContent = "Check Task"; //todo: Uncheck Task if checked
+    taskRectangleButton.appendChild(taskRectangleSpan);
 
     const taskPar = document.createElement("p");
     taskPar.setAttribute("class", "task-text");
     taskPar.setAttribute("contenteditable", "true");
     taskPar.textContent = taskText;
 
-    const taskDeleteDiv = document.createElement("div");
-    taskDeleteDiv.setAttribute("class", "task-delete");
-    taskDeleteDiv.setAttribute("title", "Delete task");
+    const taskDeleteButton = document.createElement("button");
+    taskDeleteButton.setAttribute("class", "task-delete");
+    taskDeleteButton.setAttribute("title", "Delete task");
 
-    newTask.appendChild(taskRectangleDiv);
+    const taskDeleteSpan = document.createElement("span");
+    taskDeleteSpan.setAttribute("class", "sr-only");
+    taskDeleteSpan.textContent = "Delete Task";
+    taskDeleteButton.appendChild(taskDeleteSpan);
+
+    newTask.appendChild(taskRectangleButton);
     newTask.appendChild(taskPar);
-    newTask.appendChild(taskDeleteDiv);
+    newTask.appendChild(taskDeleteButton);
 
     return newTask;
 }

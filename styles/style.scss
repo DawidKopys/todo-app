@@ -98,9 +98,10 @@
                 background-repeat: no-repeat;
                 background-position: center;
 
-                &:hover {
+                &:hover, &:focus {
                     cursor: pointer;
                     background-image: url("./images/task-rectangle-hover-dark.svg");
+                    transform: scale(1.1);
                 }
             }
 
@@ -137,7 +138,7 @@
                 .task-rectangle {
                     background-image: url("./images/task-rectangle-small-tick.svg");
 
-                    &:hover {
+                    &:hover, &:focus {
                         background-image: url("./images/task-rectangle-ticked-hover-dark.svg");
                     }
                 }
@@ -164,7 +165,7 @@
                 border-radius: 20px;
                 background-position: 3px center;
 
-                &:hover {
+                &:hover, &:focus {
                     cursor: pointer;
                     background-color: $grey1;
                     background-image: url("./images/cross-14px-hover-dark.svg");
@@ -188,3 +189,10 @@
     justify-content: flex-end;
 }
 
+
+.sr-only {
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+}
