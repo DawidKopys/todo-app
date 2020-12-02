@@ -44,7 +44,7 @@
   font-family: "FiraSans";
 }
 
-.button {
+button {
   font-family: Montserrat;
   font-weight: bold;
   color: white;
@@ -135,7 +135,7 @@ div.center-card {
           flex-direction: column;
 }
 
-.button {
+.button-card {
   display: inline-block;
   background-color: #000000;
   border-radius: 6px;
@@ -147,7 +147,7 @@ div.center-card {
           user-select: none;
 }
 
-.button:hover, .button:focus {
+.button-card:hover, .button-card:focus {
   cursor: pointer;
   background-color: #fff;
   color: black;
@@ -156,13 +156,13 @@ div.center-card {
   outline: none;
 }
 
-.button#button-delete-all {
+.button-card#button-delete-all {
   -webkit-box-flex: 1;
       -ms-flex: 1 115px;
           flex: 1 115px;
 }
 
-.button#button-delete-checked {
+.button-card#button-delete-checked {
   -webkit-box-flex: 1;
       -ms-flex: 1 160px;
           flex: 1 160px;
@@ -388,6 +388,9 @@ div.center-card {
 .sr-only {
   width: 1px;
   height: 1px;
+  margin: -1px;
+  padding: 0;
+  clip: rect(0, 0, 0, 0);
   overflow: hidden;
   position: absolute;
 }

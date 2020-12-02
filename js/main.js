@@ -9,7 +9,7 @@ function keydownEventHandler(e) {
     const deleteCheckedBtn = document.getElementById("button-delete-checked");
 
     // take care of buttons 
-    if ((e.target.classList.contains("button")) && (e.key == "Enter")) {
+    if ((e.target.classList.contains("button-card")) && (e.key == "Enter")) {
         switch (e.target) { 
             case (addBtn): {
                 addTask(e);
